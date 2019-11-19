@@ -1,13 +1,15 @@
 package ru.pvolok.application;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 
 import java.io.FileReader;
+import java.net.URL;
 
 public class Main extends Application {
 
@@ -22,9 +24,14 @@ public class Main extends Application {
 		MavenXpp3Reader reader = new MavenXpp3Reader();
 		Model model = reader.read(new FileReader("pom.xml"));
 		String appVersion = model.getVersion();
+
+		FXMLLoader loader = new FXMLLoader();
+		URL xmlUrl = getClass().getResource("/ui/primary.fxml");
+		loader.setLocation(xmlUrl);
+		Parent root = loader.load();
+
+		stage.setScene(new Scene(root));
 		stage.setTitle(APP_NAME + " " + appVersion);
-		StackPane root = new StackPane();
-		stage.setScene(new Scene(root, 1280, 720));
 		stage.show();
 	}
 }
