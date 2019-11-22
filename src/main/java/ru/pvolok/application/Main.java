@@ -7,15 +7,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import ru.pvolok.utils.CueUtils;
 
+import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 
 public class Main extends Application {
 
 	private final String APP_NAME = "Musictool";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		CueUtils.readFromFile(new File("C:\\Users\\pvolok\\Downloads\\Meteora\\Linkin Park - Meteora.cue"));
 		launch(args);
 	}
 
