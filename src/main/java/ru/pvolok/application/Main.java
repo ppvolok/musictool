@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
@@ -32,6 +33,11 @@ public class Main extends Application {
 
 		stage.setScene(new Scene(root));
 		stage.setTitle(APP_NAME + " " + appVersion);
+		if (System.getProperty("os.name").contains("Mac")) {
+			MenuBar menuBar = (MenuBar) stage.getScene().lookup("#mainMenuBar");
+			menuBar.useSystemMenuBarProperty().set(true);
+		}
+
 		stage.show();
 	}
 }

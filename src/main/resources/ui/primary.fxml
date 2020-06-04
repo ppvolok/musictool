@@ -11,44 +11,40 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.pvolok.controller.PrimaryController">
+<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.pvolok.controller.PrimaryController">
     <children>
-        <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <MenuBar fx:id="mainMenuBar" layoutY="2.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Файл">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#chooseFolderAction" text="Выбрать папку"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Закрыть"/>
+                        <MenuItem mnemonicParsing="false" onAction="#chooseFolderAction" text="Выбрать папку" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#quitApplication" text="Закрыть" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Действия">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Действие 1"/>
+                        <MenuItem mnemonicParsing="false" text="Действие 1" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Помощь">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="О программе"/>
+                        <MenuItem mnemonicParsing="false" text="О программе" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <Button fx:id="chooseFolder" layoutY="25.0" mnemonicParsing="false" onAction="#chooseFolderAction"
-                text="Выбрать папку" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="30.0"/>
-        <TextField fx:id="folderPath" disable="true" layoutX="103.0" layoutY="30.0" AnchorPane.leftAnchor="108.0"
-                   AnchorPane.rightAnchor="5.0"/>
-        <TableView layoutX="3.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0"
-                   AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
+        <Button fx:id="chooseFolder" focusTraversable="false" layoutY="25.0" mnemonicParsing="false" onAction="#chooseFolderAction" prefHeight="27.0" prefWidth="110.0" text="Выбрать папку" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0" />
+        <TextField fx:id="folderPath" disable="true" layoutX="103.0" layoutY="30.0" prefHeight="27.0" prefWidth="1152.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0" />
+        <TableView focusTraversable="false" layoutX="5.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="38.0">
             <columns>
-                <TableColumn prefWidth="73.0" resizable="false" text="Номер"/>
-                <TableColumn prefWidth="94.0" text="Исполнитель"/>
-                <TableColumn prefWidth="75.0" text="Альбом"/>
-                <TableColumn prefWidth="81.0" resizable="false" text="Год"/>
+                <TableColumn prefWidth="73.0" resizable="false" text="Номер" />
+                <TableColumn prefWidth="94.0" text="Исполнитель" />
+                <TableColumn prefWidth="75.0" text="Альбом" />
+                <TableColumn prefWidth="81.0" resizable="false" text="Год" />
             </columns>
             <placeholder>
-                <Label text="Нет данных в таблице"/>
+                <Label text="Нет данных в таблице" />
             </placeholder>
         </TableView>
     </children>
