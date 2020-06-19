@@ -3,6 +3,7 @@ package ru.pvolok.utils;
 import ru.pvolok.helper.cue.CueObject;
 import ru.pvolok.helper.cue.CueTime;
 import ru.pvolok.helper.cue.CueTrack;
+import ru.pvolok.model.SongTableModel;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,5 +74,20 @@ public class CueUtils {
 		});
 		cueObject.setTracks(tracks);
 		return cueObject;
+	}
+
+	public static List<SongTableModel> createModelFromCue(CueObject cueObject) {
+		List<SongTableModel> rows = new ArrayList<>();
+
+		String year = cueObject.getRems().get("DATE");
+		String album = cueObject.getTitle();
+		String artist = cueObject.getPerformer();
+		for (CueTrack track : cueObject.getTracks()) {
+			int number = track.getNumber();
+			String name = track.getTitle();
+			rows.add(new SongTableModel(String.format("%02d", number), name, artist, album, year));
+		}
+
+		return rows;
 	}
 }

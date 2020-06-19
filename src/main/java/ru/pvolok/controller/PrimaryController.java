@@ -2,10 +2,14 @@ package ru.pvolok.controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import ru.pvolok.helper.cue.CueObject;
+import ru.pvolok.model.SongTableModel;
 import ru.pvolok.utils.CueUtils;
 
 import java.io.File;
@@ -17,11 +21,15 @@ import java.util.stream.Collectors;
 
 public class PrimaryController {
 
-	@FXML
-	private TextField folderPath;
+	@FXML private TextField folderPath;
+	@FXML private AnchorPane mainPane;
 
-	@FXML
-	private AnchorPane mainPane;
+	@FXML private TableView<SongTableModel> musicTable;
+	@FXML private TableColumn<SongTableModel, String> numberColumn;
+	@FXML private TableColumn<SongTableModel, String> nameColumn;
+	@FXML private TableColumn<SongTableModel, String> artistColumn;
+	@FXML private TableColumn<SongTableModel, String> albumColumn;
+	@FXML private TableColumn<SongTableModel, String> yearColumn;
 
 	@FXML
 	private void chooseFolderAction() throws IOException {
@@ -33,10 +41,22 @@ public class PrimaryController {
 					.map(x -> x.toString())
 					.filter(f -> f.endsWith(".cue"))
 					.collect(Collectors.toList());
-			CueObject cueSheet = CueUtils.readFromFile(new File(cueFiles.get(0)));
+			if (cueFiles.size() != 0) {
+				CueObject cueSheet = CueUtils.readFromFile(new File(cueFiles.get(0)));
+				List<SongTableModel> model = CueUtils.createModelFromCue(cueSheet);
+
+				numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+				nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+				artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
+				albumColumn.setCellValueFactory(new PropertyValueFactory<>("album"));
+				yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+
+				musicTable.getItems().setAll(model);
+			}
 			folderPath.setText(dirPath);
 		} else {
 			folderPath.setText(null);
+			musicTable.getItems().clear();
 		}
 	}
 

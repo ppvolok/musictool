@@ -36,12 +36,13 @@
         </MenuBar>
         <Button fx:id="chooseFolder" focusTraversable="false" layoutY="25.0" mnemonicParsing="false" onAction="#chooseFolderAction" prefHeight="27.0" prefWidth="110.0" text="Выбрать папку" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0" />
         <TextField fx:id="folderPath" disable="true" layoutX="103.0" layoutY="30.0" prefHeight="27.0" prefWidth="1152.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0" />
-        <TableView focusTraversable="false" layoutX="5.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="38.0">
+        <TableView fx:id="musicTable" focusTraversable="false" layoutX="5.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="38.0">
             <columns>
-                <TableColumn prefWidth="73.0" resizable="false" text="Номер" />
-                <TableColumn prefWidth="94.0" text="Исполнитель" />
-                <TableColumn prefWidth="75.0" text="Альбом" />
-                <TableColumn prefWidth="81.0" resizable="false" text="Год" />
+                <TableColumn fx:id="numberColumn" prefWidth="70.0" resizable="false" style="-fx-alignment: CENTER;" text="Номер" />
+            <TableColumn fx:id="nameColumn" prefWidth="233.0" resizable="false" text="Наименование" />
+                <TableColumn fx:id="artistColumn" minWidth="0.0" prefWidth="119.0" text="Исполнитель" />
+                <TableColumn fx:id="albumColumn" minWidth="0.0" prefWidth="131.0" text="Альбом" />
+                <TableColumn fx:id="yearColumn" minWidth="0.0" prefWidth="54.0" resizable="false" style="-fx-alignment: CENTER;" text="Год" />
             </columns>
             <placeholder>
                 <Label text="Нет данных в таблице" />
